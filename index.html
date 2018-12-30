@@ -25,28 +25,521 @@
 
 <!-- THK Analytics -->
 
-<!-- ビューポイントのメタタグ -->
+<!-- メタタグ -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>静的サイトにあこがれて</title>
 
+<!-- ファビコン -->
+<link rel="icon" type="image/png" href="../favicon.png">
+
+<!-- RSSフィード配信 -->
+<!-- PINバックを飛ばす -->
+
 <style type="text/css">  
 <!--
 /* ----スタイルシートここから---- */
-img{max-width:100%!important;height:auto}a{text-decoration:none}a:hover{text-decoration:underline}html{font-family:verdana,sans-serif;font-size:100%}#header{text-align:center}#contents{}#contents p{}#contents #main{}#contents #main .home_area .thumb_box{float:left;width:174px;margin:0 8px 0 0}#contents #main .home_area .clearleft{clear:left}#sub{}#sub h4{}#sub .side_contents li{padding:.5em 0}#footer{text-align:center}@media screen and (min-width : 768px){html{font-family:Meiryo,"メイリオ",verdana,sans-serif}body{background:#eee}#contents{width:95%;overflow:hidden;max-width:1060px;margin:12px auto}#contents #main{border:1px solid #ddd;background:#fff;float:left;max-width:-webkit-calc(100% - 430px);max-width:calc(100% - 430px);margin:0 28px 0 0;padding:20px 48px;border-radius:0}#sub{padding:0}.side_title{font-size:90%}#contents #sub{float:left;text-align:left;margin:0;width:300px;padding:0}}
+@charset "utf-8";
+
+/* リセット */
+ol, ul, li {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+ul, ol { list-style: none; }
+
+/* クリアフィックス */
+.clearfix:after {
+	visibility: hidden;
+	height: 0;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+}
+* html .clearfix { zoom: 1; }
+*:first-child+html .clearfix { zoom: 1; }
+
+/* 画像 */
+img {max-width:100%!important;height:auto;}
+.alignright {float:right;margin:0 0 24px 24px;}
+.alignleft {float:left;margin:0 24px 24px 0;}
+.aligncenter {display:block;margin:0 auto;}
+img.float-left {float:left;margin:0 24px 24px 0;}
+img.float-right {float:right;margin:0 0 24px 24px;}
+a:hover img {opacity:0.5;}
+/* キャプション */
+.wp-caption-text {font-size:90%;margin:0;}
+.wp-caption {margin-bottom:24px;}
+.wp-caption img {margin-bottom:4px;}
+
+/* リンク */
+a {
+	color: #1122cc;
+	text-decoration: none;
+}
+a:hover {
+	color: #c03; /* 他は ff7ddf; */
+	text-decoration: underline;
+}
+/* 引用 */
+blockquote {
+	padding: 20px 30px 1px 30px;
+	margin: 0 0 40px 0;
+	background-color: #eee;
+}
+/* ソースコード 「<pre><code>」で記述 */
+pre {
+	padding: 20px;
+	margin: 20px 0 40px 0;
+	color: #fff;
+	background-color: #000;
+	overflow: auto;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+/*--76----------------------------------
+  全体定義（※スマホ・PCの順）
+--------------------------------------*/
+html {
+	font-family : verdana, sans-serif;
+	font-size : 100%;
+	line-height : 1.6;
+	background: #fff;
+	color: #333;
+}
+body {
+	margin: 0;
+	padding: 0;
+	background: #fed; /* 薄いベージュ */
+}
+/*--91----------------------------------
+  ヘッダ見出し　※サイトにより変更
+--------------------------------------*/
+#header {
+	text-align: center; /* スマホではセンタリング */
+	padding: 12px 0 0; /* 上,左右,下 */
+	background: url("./densya1600.png") 
+	no-repeat fixed top center;
+}
+#header .hgroup {
+	width: 95%;
+	margin: 0 auto;
+	max-width: 622px;
+}
+#header .top_title {
+	font-size: 28px;
+	padding: 24px 0 12px 0; /* タイトル高さ調整 */
+}
+/* タイトル装飾 */
+#header .top_title a { color: #fff; }
+#header .top_title a:hover { color: #fae; text-decoration: none; }
+/* キャプション装飾 */
+#header .caption { color: #fff; font-size: 16px;
+	padding-bottom: 24px; 
+}
+/* ナビゲーション */
+
+/* コンテンツエリア */
+#contents {
+/*	width: 95%; */
+	margin: 0 auto 0 auto;
+	text-align: left;
+	line-height: 1.6;
+}
+#contents p {
+	margin-bottom: 2.1em;
+	text-align: left;
+}
+#contents #main {
+	background-color: #fff;
+	padding: 20px 8px;
+	margin-bottom: 24px;
+}
+#contents #main .date-time {
+	font-size: 90%;
+	text-align: left;
+/*	line-height: 1em; */
+	margin: 0 0 0.8em 0;
+}
+/*--------------------------------------
+  記事内指定
+--------------------------------------*/
+#article_body ul {
+	list-style: disc outside;
+	margin-bottom: 24px;
+	padding-left: 2em;
+}
+#article_body ol {
+	list-style: decimal outside;
+	margin-bottom: 24px;
+	padding-left: 2em;
+}
+#article_body ul li {
+	margin: 0.8em 0;
+}
+#article_body ol li {
+	margin: 0.8em 0;
+	margin-left: 0.5em;
+}
+#article_body ul li a,
+#article_body ol li a {
+	text-decoration: none;
+}
+#article_body ul li a:hover,
+#article_body ol li a:hover {
+	text-decoration: underline;
+}
+#article_body ul > ul,
+#article_body ol > ol {
+	margin: 0.8em 0 0 1em;
+}
+#article_body div {
+	max-width: 100%;
+}
+#entry_body a {
+	text-decoration: underline;
+}
+/* テーブル */
+
+#article_body table {
+	max-width: 100%;
+	border-collapse: collapse;
+	margin: 24px 0;
+}
+
+#article_body td,
+#article_body th {
+	padding: 3px 10px; /* 上下3pxで左右10px */
+	border: solid 1px black; /* 実線 1px 黒 */
+}
+
+#article_body th {
+	background: #eee;
+	font-weight: bold;
+	text-align: center;
+}
+
+/*--------------------------------------
+  記事内画像
+--------------------------------------*/
+#article_body img {
+	margin-bottom: 24px;
+}
+
+#entry_body h3.new_entry_title a {
+	text-decoration: none;
+}
+
+#entry_body h3.new_entry_title a:hover {
+	text-decoration: underline;
+}
+
+/*--------------------------------------
+  記事見出し
+--------------------------------------*/
+#archive_body h2,
+#article_body h2 {
+	margin-top: 36px; /* 記事内広告と間を開ける */
+	border-bottom: 2px solid #ccc;
+}
+
+#article_body h3{
+	border-bottom: 2px solid #ccc;
+}
+
+#article_body h3 a{
+	text-decoration: none;
+}
+
+#article_body h3 a:hover {
+	text-decoration: underline;
+}
+
+
+/*--------------------------------------
+  パンくず
+--------------------------------------*/
+.pankuzu {
+	font-size: 13px;
+	padding-bottom: 10px;
+	color: #222;
+	text-align: left;
+}
+#entry_body .pankuzu a {
+	color: #222;
+	text-decoration: none;
+}
+div#breadcrumb {
+	clear: both;
+}
+div#breadcrumb a {
+	color: #666;
+}
+div#breadcrumb div {
+	display: inline;
+	font-size: 13px;
+}
+
+
+/*--------------------------------------
+  サイド
+--------------------------------------*/
+#sub {
+	font-size: 100%;
+	margin-bottom: 24px;
+	padding: 0 8px;
+	overflow: hidden;
+}
+
+/* サイドバー見出し */
+#sub h4 {
+	font-size: 18px;
+	border-bottom: 2px solid #888;
+	color: #666;
+	font-weight: bold;
+}
+
+#sub li > h4 {
+	margin-top: 24px;
+}
+
+
+#sub .side_contents {
+	margin-bottom: 36px;
+}
+
+/* メインカテゴリー */
+#sub .side_contents ul {
+	text-align: left;
+	margin: 0 0 0 5px;
+	text-indent: 1em;
+}
+#sub .side_contents li {
+	margin: 0;
+	padding: 0.5em 0;
+/*	border-bottom: 1px solid rgba(0,0,0,.2); */
+/*	box-shadow: 0 1px 0 rgba(255,255,255,1); */
+}
+
+/* サブカテゴリー */
+#sub .side_contents li ul {
+	text-align: left;
+	text-indent: 2.5em;
+}
+#sub .side_contents li ul li {
+	margin: 0;
+	padding: 0.5em 0;
+}
+
+/* 新着記事 */
+.side_new {
+	margin: 0 0 15px 0;
+	text-align: left;
+	display: table;
+	width: 100%;
+}
+
+.side_new:hover {
+	text-decoration: none;
+	background: #eee;
+}
+
+.side_thumb {
+	display: table-cell;
+	width: 105px;
+	padding: 0 5px 0 0;
+}
+
+.side_title {
+	font-size: 90%;
+	display: table-cell;
+	vertical-align: top;
+}
+
+.side_title span {
+	color: #333;
+}
+
+/* TOPへ戻る */
+#sub .top-home a {
+	color: #FF8F22;
+	font-size: 100%;
+}
+
+#sub .top-home a:hover {
+	color: #ff7ddf;
+}
+
+/*--------------------------------------
+  フッター
+--------------------------------------*/
+#footer {
+	padding: 12px 0 12px 0;
+	color: #333;
+/*	background: #eed;  薄暗いベージュ */
+	text-align: center;
+	overflow: hidden;
+}
+
+/*--------------------------------------
+  TOPへ戻る スマホ固定型
+--------------------------------------*/
+.top-home {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+
+#footer .top-home a {
+	font-size: 100%;
+}
+
+#footer .top-home a:hover {
+}
+
+/*--------------------------------------
+  ここからPC&タブレット表示設定
+--------------------------------------*/
+
+@media screen and (min-width : 768px){
+
+/*--------------------------------------
+  768px 全体
+--------------------------------------*/
+html { font-family: Meiryo, "メイリオ", verdana, sans-serif; }
+
+/*--------------------------------------
+  768px ヘッダー
+--------------------------------------*/
+header { text-align: left; } /* PC左寄せ */
+#header .hgroup { max-width: 1060px;  }
+#header .top_title { font-size: 36px; }
+/*
+#header .caption { font-size: 12px;}
+*/
+
+/*--------------------------------------
+  768px コンテンツ
+--------------------------------------*/
+#contents {
+	width: 95%;
+	overflow: hidden;
+	max-width: 1060px;
+	margin: 12px auto;
+}
+#contents #main {
+	float: left;
+	max-width: -webkit-calc(100% - 430px);
+	max-width: calc(100% - 430px);
+	margin: 0 28px 0 0;
+	padding: 20px 48px; /* 初期値 20px 64px */
+	border-radius: 0;
+}
+#contents #main .date-time {
+	font-size: 90%;
+	text-align: left;
+}
+#entry_body {
+	margin: 0;
+	padding: 0;
+}
+
+/*--------------------------------------
+  768px 記事内指定
+--------------------------------------*/
+#article_body img {
+	margin-bottom: 24px;
+}
+#article_body ul li {
+	margin: 0 0;
+}
+#article_body ol li {
+	margin: 0 0;
+}
+
+/*--------------------------------------
+  768px サイド
+--------------------------------------*/
+#sub {padding: 0;}
+
+.side_title { font-size: 90%; }
+#contents #sub {
+	float: left;
+	text-align: left;
+	margin: 0;
+	width: 300px;
+	padding: 0;
+}
+#contents #sub p { text-align: left; }
+
+/* サイドバー見出し */
+#sub h4 {
+	font-size: 20px;
+	text-align: left;
+	border: none;
+	color: #333;
+	text-shadow: -1px 1px 0 rgba(255, 255, 255, 1);
+	font-weight: bold;
+	margin: 0 0 18px 0;
+}
+
+.side_new:hover {
+	text-decoration: none;
+	background: #fff;
+}
+
+/* メインカテゴリー */
+#sub .side_contents li {
+	padding: 0 0; /* スマホでは、0.5em 0 */
+ 	border-bottom: 0; /* PCは下線なし */
+}
+
+}
+/* PC表示ここまで */
+
+/* h2タグ上の広告 */
+.mid-ad {margin: 48px 0 0 0; /* ラベル表示時は -24px 0 0 0 0 */}
+
+/* 記事下広告 */
+p.ad-label {margin: 48px 0 0 0; }
+.end-ad {margin: -24px 0 0 0; }
+
+/* ヘッダー右バナー広告　幅1050px未満非表示 */
+.right-ad {float:right;margin:0;}
+
+@media screen and (max-width: 1100px){
+	.right-ad {display:none;}
+}
+
 /* ----スタイルシートここまで---- */
 -->
 </style>
 </head>
+
 <body>
 <div id="header"><!-- header -->
 <header>
-<font size=+3>
+
+<!-- タイトル -->
+<div class="hgroup">
+<br><br><br><br><br><br><br><br>
+<div class="top_title">
 <a href="https://sonotato6.github.io/" title="静的サイトにあこがれて">静的サイトにあこがれて</a>
-</font>
-<br>
+</div>
+<div class="caption">
 WordPress がイヤになって、作ってみました静的サイト
-<hr>
+</div>
+</div>
+
 </header>
 </div><!-- //header -->
 
