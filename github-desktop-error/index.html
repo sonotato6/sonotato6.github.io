@@ -34,6 +34,22 @@
 <!--
 /* ----スタイルシートここから---- */
 img{max-width:100%!important;height:auto}a{text-decoration:none}a:hover{text-decoration:underline}html{font-family:verdana,sans-serif;font-size:100%}#header{text-align:center}#contents{}#contents p{}#contents #main{}#contents #main .home_area .thumb_box{float:left;width:174px;margin:0 8px 0 0}#contents #main .home_area .clearleft{clear:left}#sub{}#sub h4{}#sub .side_contents li{padding:.5em 0}#footer{text-align:center}@media screen and (min-width : 768px){html{font-family:Meiryo,"メイリオ",verdana,sans-serif}body{background:#eee}#contents{width:95%;overflow:hidden;max-width:1060px;margin:12px auto}#contents #main{border:1px solid #ddd;background:#fff;float:left;max-width:-webkit-calc(100% - 430px);max-width:calc(100% - 430px);margin:0 28px 0 0;padding:20px 48px;border-radius:0}#sub{padding:0}.side_title{font-size:90%}#contents #sub{float:left;text-align:left;margin:0;width:300px;padding:0}}
+/* 引用 */
+blockquote {
+	padding: 20px 30px 1px 30px;
+	margin: 0 0 40px 0;
+	background-color: #eee;
+}
+/* ソースコード 「<pre><code>」で記述 */
+pre {
+	padding: 20px;
+	margin: 20px 0 40px 0;
+	color: #fff;
+	background-color: #000;
+	overflow: auto;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
 /* ----スタイルシートここまで---- */
 -->
 </style>
@@ -113,10 +129,10 @@ git config &#8211;global user.name &#8220;あなたの名前&#8221;</p>
 一瞬悩みましたが、コマンドプロンプトでいいのかな？</p>
 <p>GitHub Desktop からも開くことができます。</p>
 <p>Repository > Open in Command Prompt でコマンドプロンプトを起動</p>
-<p><code><br />
+<pre><code>
 $git config --global user.email （登録したメールアドレス）<br />
-$git config --global user.name （ID）<br />
-</code></p>
+$git config --global user.name （ID）
+</code></pre>
 <p>これで大丈夫かな？</p>
 <p>「Commit to master」を押してみます・・・</p>
 <p>いけました！！</p>
