@@ -1,9 +1,84 @@
+<style type="text/css">  
+<!--
+h4 {
+	font-size: 24px;
+	text-align: left;
+	border-bottom: 2px solid #ccc;
+	color: #666;
+}
+.side_new2 {
+	margin: 0;
+	text-align: left;
+	display: table;
+	width: 100%;
+}
+.side_thumb2 {
+	display: table-cell;
+	width: 70px; /*サムネイル60px*/
+}
+.side_title2 {
+	font-size: 90%;
+	display: table-cell;
+	vertical-align: middle;
+	padding-left 1em;
+}
+.side_title2 span {
+	color: #333;
+}
+.cp_menu {
+	margin: 0 auto;
+	padding: 0;
+}
+.cp_menu a {
+	display: block;
+	padding: 8px 0;
+	text-decoration: none;
+	color: #000;
+	line-height: 1.5;
+}
+.cp_menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+    line-height: 1.2;
+
+}
+/*開いているカテゴリーの色*/
+.accordion:checked + label {
+	font-weight: bold;
+	background: #060;
+.cp_menu li {
+	font-size: 14px;
+/*	overflow-y: hidden;*/
+	transition: all 0.5s; /*時間的変化*/
+}
+.cp_menu li a {
+	font-size: 14px;
+	line-height: 1.2;
+}
+.cp_menu li:hover {
+	background: #cfc;
+}
+-->
+</style>
+
 <p>iframeサイドバー</p>
-<!--記事一覧-->
+<h4>記事一覧</h4>
+<div class="cp_menu">
 <ul>
-<li><a href="https://sonotato6.github.io/seiteki-site-akogarete/" target="_top">静的サイトにあこがれて（１）。WordPressに頼らない。もっと簡単でいい</a></li>
-<li><a href="https://sonotato6.github.io/irumono-iranaimono/" target="_top">静的サイトにあこがれて（２）何がいるのか いらないのか</a></li>
-<li><a href="https://sonotato6.github.io/github-start/" target="_top">GitHub Pages でブログ？開設！素人でも何とかできました</a></li>
+<li><a href="https://sonotato6.github.io/seiteki-site-akogarete/" target="_top"><div class="side_new2"><div class="side_thumb2">
+   <img src="https://sonotato6.github.io/seiteki-site-akogarete/001.png" width="60" height="60" alt="thumbnail" /></div><div class="side_title2">
+<span>静的サイトにあこがれて（１）WordPressに頼らない。もっと簡単でいい</span></div></div></a>
+</li>
+<li><a href="https://sonotato6.github.io/irumono-iranaimono/" target="_top"><div class="side_new2"><div class="side_thumb2">
+   <img src="https://sonotato6.github.io/irumono-iranaimono/001.png" width="60" height="60" alt="thumbnail" /></div><div class="side_title2">
+<span>静的サイトにあこがれて（２）何がいるのか いらないのか</span></div></div></a>
+</li>
+<li><a href="https://sonotato6.github.io/github-start/" target="_top"><div class="side_new2"><div class="side_thumb2">
+   <img src="https://sonotato6.github.io/github-start/001.png" width="60" height="60" alt="thumbnail" /></div><div class="side_title2">
+<span>GitHub Pages でブログ？開設！素人でも何とかできました</span></div></div></a>
+</li>
+
 <li><a href="https://sonotato6.github.io/github-pages-adsense/" target="_top">GitHub Pages の新しいサイトではアドセンスが再審査！？→無事合格</a></li>
 <li><a href="https://sonotato6.github.io/github-desktop-error/" target="_top">GitHub Desktop でエラー発生「あなたは誰ですか？」</a></li>
 <li><a href="https://sonotato6.github.io/hexo/" target="_top">静的サイトジェネレーター「HEXO」を使えれば楽になるかな？</a></li>
@@ -14,5 +89,6 @@
 <li><a href="https://sonotato6.github.io/directory-permalink/" target="_top">手作りで静的サイトを構築する（２）ディレクトリ構造とパーマリンク</a></li>
 <li><a href="https://sonotato6.github.io/iframe/" target="_top">手作りで静的サイトを構築する（３）iframeを活用しよう</a></li>
 </ul>
+</div>
 <!--記事一覧-->
 <p>iframeサイドバーここまで。</p>
