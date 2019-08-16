@@ -716,16 +716,17 @@ header { text-align: left; } /* PC左寄せ */
 
 } /* PC表示ここまで */
 
+/* h2タグ上の広告 */
+.mid-ad {margin: 48px 0 0 0; /* ラベル表示時は -24px 0 0 0 0 */}
+/* 記事下広告 */
+p.ad-label {margin: 48px 0 0 0; }
+.end-ad {margin: -24px 0 0 0; }
 /* ヘッダー右バナー広告　幅1050px未満非表示 */
 .right-ad {float:right;margin:0;}
-@media screen and (max-width: 1100px){
-	.right-ad {display:none;}
-}
+@media screen and (max-width: 1100px){.right-ad {display:none;}}
 
 /* レクタングル右広告　スマホ非表示 */
-@media screen and (max-width: 1100px){
-	.rr-ad {display:none;}
-}
+@media screen and (max-width: 1100px){.rr-ad {display:none;}}
 
 /* コメント一覧用 */
 /* 応援ありがとうございます */
