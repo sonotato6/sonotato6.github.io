@@ -375,7 +375,7 @@ header { text-align: left; } /* PC左寄せ */
 -->
 </style>
 
-<title>静的サイトにあこがれて</title>
+<title>Markdownで書ける静的サイト。Flat-File CMSと呼べるかな？｜静的サイトにあこがれて</title>
 
 </head>
 
@@ -397,7 +397,7 @@ WordPress がイヤになって、作ってみました静的サイト
 <div id="contents">
 	<div id="main"><article>
 <br />
-<h1>究極の Flat-File CMS（コンテンツ管理システム）と呼べるかな？</h1>
+<h1>Markdownで書ける静的サイト。究極の Flat-File CMS（コンテンツ管理システム）と呼べるかな？</h1>
 <time class="entry-date" datetime="2018-12-22T13:59:33+00:00"></time>
 
 		<div id="md_out" class="markdown-body"></div>
@@ -426,13 +426,14 @@ WordPress がイヤになって、作ってみました静的サイト
 <h2>何も持たずに陸の孤島へやって来た</h2>
 
 これは（名前はまだありません^^;）、Markdownで記述できるシンプルなFlat-File CMS（コンテンツ管理システム）を目指した静的サイトのためのファイルです。index.htmlと、JavascriptによるMarkdownパーサーで構成されています。
-のスケルトンです。
 
 PHPやCGIは、利用していません（そもそもここでは動きませんw）
 
-Singularity CMS と [MDwiki](http://dynalon.github.io/mdwiki/#!index.md)にインスパイアされて作られた、[HoneDrops](https://www.catch.jp/honedrops/index.ja/)にインスパイアされて作りました。
+webページで表示される「index.html」をテキストエディタでべた書きするだけなのですが、肝心の記事をHTMLで書くのは大変です。ちょっと修正するだけでも面倒です。それなら記事部分「&lt;article&gt;～&lt;/article&gt;」をMarkdownで書けるようにしました。
 
-ヘッダーとフッター部分は置いておいて、Markdownで好きなように書いた記事を新しいフォルダに放り込めば、クライアント側でHTML文章に変換してくれます。
+これは、Singularity CMS と [MDwiki](http://dynalon.github.io/mdwiki/#!index.md)にインスパイアされて作られた、[HoneDrops](https://www.catch.jp/honedrops/index.ja/)を参考にしました（この場を借りてお礼申し上げます。ありがとうございました）。
+
+ヘッダー部分とフッター部分は前の記事をコピペして、後はMarkdownで好きなように書いた記事を新しいフォルダに放り込めば、それでおしまい。フォルダ名がそのままパーマリンクになります。Markdown部分は、クライアント側でHTML文章に変換してくれます。
 
 [HoneDrops](https://www.catch.jp/honedrops/index.ja/)との違いは、
 - PHP は使いません
@@ -444,63 +445,52 @@ Singularity CMS と [MDwiki](http://dynalon.github.io/mdwiki/#!index.md)にイ�
 
 1. データベース不要 > 管理やバックアップが楽
 2. サーバー負荷が軽い > Markdownのレンダリングはクライアントで実行
-3. インストールが簡単 > ファイルを放り込むだけ
+3. 記事の更新が簡単 > ファイルを放り込むだけ
 4. Google検索に対応
-5. 柔軟なカスタマイズ（marked.jsを利用）
 
 ### ページの作成
 
-- マークアップ：[marked.js](https://github.com/chjj/marked)と[github-markdown.css](https://github.com/sindresorhus/github-markdown-css)を使っているので、一般的なMarkdownが通るはず。
+マークアップ：[marked.js](https://github.com/chjj/marked)を使っているので、一般的なMarkdownが通ります。Markdownにない記法は、直接HTMLで書けばOKです。
+
+代償として「&lt;」や「&gt;」や「&amp;」はそれぞれ、「&amp;lt;,&amp;gt;,&amp;amp;」と書かなくてはならなくなりました。「Markdownしか書きません！」ということなら、[marked.js](https://github.com/chjj/marked)のオプションで設定できますが、今はこのままでいいですw
+
+ついでのついでに、改行をそのまま改行（&lt;br /&lt;）とするオプションも生かしています。いちいちスペースを2個入れるのも面倒ですしね。HTMLで書いたときに、改行がそのまま生かされて面倒なことになりますが、そこも今のところガマンしますw
 
 ### ページアクセス
 
 |URL|表示されるページ|
 |:-----------|:------------|
-|/|/content/index.md|
-|/index|/content/index.md|
-|/example|/content/example.md|
-|/sub01/|/content/sub01/index.md|
-|/sub01/index|/content/sub01/index.md|
-|/sub01/example|/content/sub01/example.md|
-|/sub01/sub11/|/content/sub01/sub11/index.md|
-|/sub01/sub11/index|/content/sub01/sub11/index.md|
-|/sub01/sub11/example|/content/sub01/sub11/example.md|
+|/|/index.html|
+|/index|/index.html|
+|/example|/example/index.html|
+|/example/example/|/example/example/index.html|
 
+それぞれ「index」や「index.html」を付けても同じページが表示されてしまいますね。重複URLということで、怒られるかな？
 
+「.htaccess」で禁止させようかな？
 
-### サーバー設定
+### その他
 
-index.phpで、以下の設定が可能です。
-
-- titleタグ
-- Markdownファイルの拡張子
-- コンテンツフォルダ名
-
-
-### ページデザイン
-
-style.cssで、細かな設定が可能です。
-
+- titleタグはその都度書いています
+- HTMLタグをちゃんと使っていないから、SEO的には弱いかな？見出しタグ（&lt;h2&lt;とか）くらいは、HTMLで書いています^^;
+- style.cssで、ページごとの設定が可能です
+- フォルダ内に「index.html」と一緒にサムネイルファイルとか入れておけます（サイドバーを見てくださいね）
+- サイドバーの記事一覧は、別ファイルにしてiframeで実現しています（書き換えるのが一回で済みますねw）
 
 ### Markdown
 
-001.jsで、[marked.js](https://github.com/chjj/marked)のオプションを設定できます。
+001.jsで、[marked.js](https://github.com/chjj/marked)のオプションを設定しています。
 
 ### 属性の追加
 
 [marked.js](https://github.com/chjj/marked)で出力されない属性などを追加する場合には、直接HTMLで記述できます。
 
-## License（途中です）
+### Credits
 
-元ネタ：[HoneDrops](https://www.catch.jp/honedrops/index.ja/)　 MIT License - Copyright (c) 2017 Yutaka Catch
+#### HoneDrops
 
-
-## Credits
-
-#### Singularity CMS
-
- - Copyright (c) 2012-2015 Christopher J. Su  
- - https://github.com/csu/singularity-cms
+ - Copyright (c) 2017 Yutaka Catch
+ - https://www.catch.jp/honedrops/index.ja/
 
 #### marked.js
 
